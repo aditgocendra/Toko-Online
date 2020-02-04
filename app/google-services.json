@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "368865545237",
+    "firebase_url": "https://toko-online-b2f78.firebaseio.com",
+    "project_id": "toko-online-b2f78",
+    "storage_bucket": "toko-online-b2f78.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:368865545237:android:a548427bc12b12df42d21c",
+        "android_client_info": {
+          "package_name": "com.oblivion.tokoonline"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "368865545237-ps0vkrjeoam2s2lme7jjnfordbmjrqob.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.oblivion.tokoonline",
+            "certificate_hash": "d629627f13c2fa53c2a8cc21a2fe95e9b6670fa9"
+          }
+        },
+        {
+          "client_id": "368865545237-nd1bqh9j28rjif3tgd7mlh5kjc8nvtb9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDjD95nLnPn11hc3vKwhyrOfGpKaIY75nU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "368865545237-nd1bqh9j28rjif3tgd7mlh5kjc8nvtb9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
