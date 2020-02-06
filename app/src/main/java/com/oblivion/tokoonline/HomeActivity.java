@@ -11,6 +11,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.oblivion.tokoonline.fragment.AccountFragment;
 import com.oblivion.tokoonline.fragment.FavoriteFragment;
 import com.oblivion.tokoonline.fragment.HomeFragment;
 import com.oblivion.tokoonline.fragment.MystoreFragment;
@@ -20,7 +21,7 @@ import java.util.Objects;
 
 public class HomeActivity extends AppCompatActivity {
 
-
+    Fragment homeFragment, favoriteFragment, accountFragment, mystoreFragment, sellFragment;
 
 
     @Override
@@ -30,22 +31,22 @@ public class HomeActivity extends AppCompatActivity {
 
         initComponent();
 
+        setFragment(homeFragment);
+
     }
 
 
     private void initComponent(){
 
-        Toolbar toolbar = findViewById(R.id.toolBar);
-        setSupportActionBar(toolbar);
-        Objects.requireNonNull(getSupportActionBar()).setDisplayShowTitleEnabled(true);
+        homeFragment = new HomeFragment();
+        favoriteFragment = new FavoriteFragment();
+        accountFragment = new AccountFragment();
+        mystoreFragment = new MystoreFragment();
+        sellFragment = new SellFragment();
 
-        final Fragment homeFragment = new HomeFragment();
-        final Fragment favoriteFragment = new FavoriteFragment();
-        final Fragment accountFragment = new HomeFragment();
-        final Fragment mystoreFragment = new MystoreFragment();
-        final Fragment sellFragment = new SellFragment();
 
-        setFragment(homeFragment);
+
+
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigation);
 
@@ -58,12 +59,10 @@ public class HomeActivity extends AppCompatActivity {
 
                     case R.id.home:
                         setFragment(homeFragment);
-
                         return true;
 
                     case R.id.favorite:
                         setFragment(favoriteFragment);
-
                         return true;
 
                     case R.id.sell:
@@ -77,6 +76,7 @@ public class HomeActivity extends AppCompatActivity {
                     case R.id.account:
                         setFragment(accountFragment);
                         return true;
+
 
                     default:
                         return false;
@@ -96,12 +96,12 @@ public class HomeActivity extends AppCompatActivity {
 
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.topbar_menu, menu);
-
-        return true;
-    }
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        getMenuInflater().inflate(R.menu.topbar_menu, menu);
+//
+//        return true;
+//    }
 
 
 

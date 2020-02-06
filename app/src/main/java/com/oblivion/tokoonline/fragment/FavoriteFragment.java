@@ -11,9 +11,7 @@ import android.view.ViewGroup;
 
 import com.oblivion.tokoonline.R;
 
-/**
- * A simple {@link Fragment} subclass.
- */
+
 public class FavoriteFragment extends Fragment {
 
 

@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
                         } else {
 
                             Toast.makeText(MainActivity.this, "Login gagal, harap coba beberap saat lagi",
-                                    Toast.LENGTH_SHORT).show();
+                                    Toast.LENGTH_LONG).show();
                             updateUI(null);
                         }
 
@@ -84,8 +84,12 @@ public class MainActivity extends AppCompatActivity {
 
     private void updateUI(FirebaseUser user) {
 
-        Intent intent = new Intent(MainActivity.this, HomeActivity.class);
-        startActivity(intent);
+        if (user != null){
+
+            Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+            startActivity(intent);
+        }
+
     }
 
     private static boolean ValidasiEmail(String email){
@@ -107,6 +111,18 @@ public class MainActivity extends AppCompatActivity {
 
         Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
         startActivity(intent);
+
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        // Check if user is signed in (non-null) and update UI accordingly.
+         
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if (currentUser != null){
+            updateUI(currentUser);
+        }
 
     }
 

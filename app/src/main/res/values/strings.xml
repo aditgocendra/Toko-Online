@@ -3,4 +3,21 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- kategori -->
+
+    <string name="elektronik">Elektronik</string>
+    <string name="buku_peralatan">Buku &amp; Alat Tulis</string>
+    <string name="makanan_minuman">Makanan &amp;  Minuman</string>
+    <string name="motor">Motor</string>
+    <string name="mobil">Mobil</string>
+    <string name="mainan">Mainan</string>
+    <string name="properti">Properti</string>
+    <string name="bayi">Kebutuhan Bayi</string>
+    <string name="aksesoris_elektronik">Aksesoris Elektronik</string>
+
+
+    <!-- end kategori -->
+
+
 </resources>

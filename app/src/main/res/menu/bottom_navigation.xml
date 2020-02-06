@@ -8,7 +8,6 @@
 
         />
 
-
     <item
         android:icon="@drawable/ic_favorite"
         android:id="@+id/favorite"
@@ -16,15 +15,11 @@
 
         />
 
-
-
     <item
         android:icon="@drawable/ic_add_a_photo"
         android:id="@+id/sell"
         android:title="Sell"
-
         />
-
 
     <item
         android:icon="@drawable/ic_toko"
@@ -32,7 +27,6 @@
         android:title="My Store"
 
         />
-
 
     <item
         android:icon="@drawable/ic_account"

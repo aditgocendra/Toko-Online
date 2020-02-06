@@ -5,7 +5,15 @@
     <item
         android:icon="@drawable/ic_notifications"
         android:id="@+id/notif"
-        android:title="NOtifikasi"
+        android:title="Notifikasi"
+        app:showAsAction="always"
+
+        />
+
+    <item
+        android:icon="@drawable/ic_location"
+        android:id="@+id/location"
+        android:title="Location"
         app:showAsAction="always"
 
         />
