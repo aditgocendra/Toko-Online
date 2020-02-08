@@ -1,4 +1,4 @@
-package com.oblivion.tokoonline;
+package com.oblivion.tokoonline.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,6 +8,7 @@ import android.os.Handler;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.oblivion.tokoonline.R;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -32,13 +33,13 @@ public class SplashActivity extends AppCompatActivity {
 
         if (user != null && user.isEmailVerified()){
 
-            Intent intent = new Intent(SplashActivity.this, HomeActivity.class);
+            Intent intent = new Intent(SplashActivity.this, MainActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
 
         }
         else {
-            Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+            Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
         }

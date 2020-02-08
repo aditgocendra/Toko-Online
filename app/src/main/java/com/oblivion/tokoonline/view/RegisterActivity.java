@@ -1,27 +1,31 @@
-package com.oblivion.tokoonline;
+package com.oblivion.tokoonline.view;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.github.ybq.android.spinkit.sprite.Sprite;
+import com.github.ybq.android.spinkit.style.Circle;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
+import com.oblivion.tokoonline.R;
 
 public class RegisterActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     private EditText email_edt, pass_edt, confirm_edt;
+    private ProgressBar progressBar;
 
 
     @Override
@@ -33,7 +37,6 @@ public class RegisterActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
-
     }
 
     private void initComponent(){
@@ -41,6 +44,11 @@ public class RegisterActivity extends AppCompatActivity {
         email_edt = findViewById(R.id.email_editText);
         pass_edt = findViewById(R.id.pass_editText);
         confirm_edt = findViewById(R.id.confirm_editText);
+
+        progressBar = findViewById(R.id.spin_kit);
+        Sprite circle = new Circle();
+        progressBar.setIndeterminateDrawable(circle);
+        progressBar.setVisibility(View.INVISIBLE);
 
     }
 
@@ -71,6 +79,7 @@ public class RegisterActivity extends AppCompatActivity {
             Toast.makeText(this, "Sandi dan konfirmasi sandi tidak sama", Toast.LENGTH_SHORT).show();
 
         }else{
+            progressBar.setVisibility(View.VISIBLE);
            createUser(email, pass);
         }
     }
@@ -103,24 +112,35 @@ public class RegisterActivity extends AppCompatActivity {
 
                             final FirebaseUser user = mAuth.getCurrentUser();
 
-                            assert user != null;
-                            user.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
+                            String username = usernameFromEmail(user.getEmail());
+                            UserProfileChangeRequest profileChangeRequest = new UserProfileChangeRequest.Builder()
+                                    .setDisplayName(username).build();
+
+                            user.updateProfile(profileChangeRequest).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {
 
-                                    if (task.isSuccessful()){
-                                        Toast.makeText(RegisterActivity.this,
-                                                "Daftar berhasil, silahkan lakukan verifikasi", Toast.LENGTH_LONG).show();
-                                        updateUI(user);
-                                    }else {
-                                        Toast.makeText(RegisterActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                                    }
+                                        user.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
+                                            @Override
+                                            public void onSuccess(Void aVoid) {
 
+                                                if (task.isSuccessful()){
+                                                    progressBar.setVisibility(View.INVISIBLE);
+                                                    Toast.makeText(RegisterActivity.this,
+                                                            "Daftar berhasil, silahkan lakukan verifikasi", Toast.LENGTH_LONG).show();
+                                                    updateUI(user);
+                                                }else {
+                                                    progressBar.setVisibility(View.INVISIBLE);
+                                                    Toast.makeText(RegisterActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                                }
+
+                                            }
+                                        });
                                 }
                             });
 
                         } else {
-
+                            progressBar.setVisibility(View.INVISIBLE);
                             Toast.makeText(RegisterActivity.this, "Daftar gagal, silahkan coba beberapa saat lagi",
                                     Toast.LENGTH_LONG).show();
                             updateUI(null);
@@ -136,11 +156,19 @@ public class RegisterActivity extends AppCompatActivity {
 
         if (user != null){
 
-            Intent intent = new Intent(this, MainActivity.class);
+            Intent intent = new Intent(this, LoginActivity.class);
             startActivity(intent);
 
         }
 
+    }
+
+    private String usernameFromEmail(String email) {
+        if (email.contains("@")) {
+            return email.split("@")[0];
+        } else {
+            return email;
+        }
     }
 
 

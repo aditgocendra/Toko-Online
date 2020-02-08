@@ -15,13 +15,17 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.oblivion.tokoonline.R;
-import com.oblivion.tokoonline.SettingActivity;
+import com.oblivion.tokoonline.view.SettingActivity;
 
 
 public class AccountFragment extends Fragment {
 
+    private View view;
 
     public AccountFragment() {
         // Required empty public constructor
@@ -32,7 +36,7 @@ public class AccountFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_account, container, false);
+        view = inflater.inflate(R.layout.fragment_account, container, false);
 
         Toolbar toolbar = view.findViewById(R.id.toolBar);
         ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
@@ -40,10 +44,19 @@ public class AccountFragment extends Fragment {
 
         setHasOptionsMenu(true);
 
-
+        initComponent();
 
         return view;
     }
+
+    private void initComponent(){
+
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        FirebaseUser mUser = mAuth.getCurrentUser();
+        TextView viewDisplayName = view.findViewById(R.id.display_name);
+        viewDisplayName.setText(mUser.getDisplayName());
+    }
+
 
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
@@ -66,7 +79,6 @@ public class AccountFragment extends Fragment {
                 default:
                     return super.onOptionsItemSelected(item);
         }
-
 
     }
 }

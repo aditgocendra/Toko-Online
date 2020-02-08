@@ -1,42 +1,36 @@
-package com.oblivion.tokoonline;
+package com.oblivion.tokoonline.view;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
-import android.view.Menu;
+import android.os.Handler;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.oblivion.tokoonline.R;
 import com.oblivion.tokoonline.fragment.AccountFragment;
 import com.oblivion.tokoonline.fragment.FavoriteFragment;
 import com.oblivion.tokoonline.fragment.HomeFragment;
 import com.oblivion.tokoonline.fragment.MystoreFragment;
 import com.oblivion.tokoonline.fragment.SellFragment;
 
-import java.util.Objects;
+public class MainActivity extends AppCompatActivity {
 
-public class HomeActivity extends AppCompatActivity {
+    private Fragment homeFragment, favoriteFragment, accountFragment, mystoreFragment, sellFragment;
 
-    Fragment homeFragment, favoriteFragment, accountFragment, mystoreFragment, sellFragment;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        setContentView(R.layout.activity_main);
 
-        initComponent();
-
-        setFragment(homeFragment);
-
-    }
-
-
-    private void initComponent(){
+        String activity = getIntent().getStringExtra("activity");
 
         homeFragment = new HomeFragment();
         favoriteFragment = new FavoriteFragment();
@@ -44,12 +38,21 @@ public class HomeActivity extends AppCompatActivity {
         mystoreFragment = new MystoreFragment();
         sellFragment = new SellFragment();
 
+        if (activity != null){
+            setFragment(accountFragment);
+        }else {
+            initComponent();
+
+            setFragment(homeFragment);
+
+        }
 
 
+    }
 
+    private void initComponent(){
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigation);
-
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -102,6 +105,27 @@ public class HomeActivity extends AppCompatActivity {
 //
 //        return true;
 //    }
+
+    private boolean doubleBackToExitPressedOnce = false;
+
+    @Override
+    public void onBackPressed() {
+        if (doubleBackToExitPressedOnce) {
+            super.onBackPressed();
+            return;
+        }
+
+        this.doubleBackToExitPressedOnce = true;
+        Toast.makeText(this, "Klik sekali lagi untuk keluar", Toast.LENGTH_SHORT).show();
+
+        new Handler().postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+                doubleBackToExitPressedOnce=false;
+            }
+        }, 2000);
+    }
 
 
 
