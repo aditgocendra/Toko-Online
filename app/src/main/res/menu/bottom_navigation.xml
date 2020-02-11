@@ -21,12 +21,12 @@
         android:title="Sell"
         />
 
-    <item
-        android:icon="@drawable/ic_toko"
-        android:id="@+id/my_store"
-        android:title="My Store"
+<!--    <item-->
+<!--        android:icon="@drawable/ic_toko"-->
+<!--        android:id="@+id/my_store"-->
+<!--        android:title="My Store"-->
 
-        />
+<!--        />-->
 
     <item
         android:icon="@drawable/ic_account"

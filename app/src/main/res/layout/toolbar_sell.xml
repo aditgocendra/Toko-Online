@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="@color/primaryColor">
+
+
+        <LinearLayout
+            android:layout_centerVertical="true"
+            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
+
+            <Spinner
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:id="@+id/spinnerDirectory"
+                android:textSize="200sp"
+                android:gravity="center_vertical"
+                android:layout_weight="90"/>
+
+
+
+
+            <TextView
+                android:id="@+id/next_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:text="Next"
+                android:textColor="@color/primaryTextColor"
+                android:textStyle="italic|bold"
+                android:layout_weight="10"
+                android:gravity="center"
+                />
+
+
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+

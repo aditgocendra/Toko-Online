@@ -21,7 +21,7 @@ import com.oblivion.tokoonline.fragment.SellFragment;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Fragment homeFragment, favoriteFragment, accountFragment, mystoreFragment, sellFragment;
+    private Fragment homeFragment, favoriteFragment, accountFragment, sellFragment;
 
 
 
@@ -35,17 +35,24 @@ public class MainActivity extends AppCompatActivity {
         homeFragment = new HomeFragment();
         favoriteFragment = new FavoriteFragment();
         accountFragment = new AccountFragment();
-        mystoreFragment = new MystoreFragment();
+//        mystoreFragment = new MystoreFragment();
         sellFragment = new SellFragment();
 
-        if (activity != null){
-            setFragment(accountFragment);
-        }else {
+        if (activity == null){
             initComponent();
 
             setFragment(homeFragment);
 
+        }else {
+
+            if (activity.equals("settingActivity")){
+                setFragment(accountFragment);
+            }else if(activity.equals("nextsellActivity")){
+                setFragment(sellFragment);
+            }
         }
+
+
 
 
     }
@@ -72,9 +79,9 @@ public class MainActivity extends AppCompatActivity {
                         setFragment(sellFragment);
                         return true;
 
-                    case R.id.my_store:
-                        setFragment(mystoreFragment);
-                        return true;
+//                    case R.id.my_store:
+//                        setFragment(mystoreFragment);
+//                        return true;
 
                     case R.id.account:
                         setFragment(accountFragment);
