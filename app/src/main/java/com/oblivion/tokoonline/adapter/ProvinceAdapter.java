@@ -1,6 +1,7 @@
 package com.oblivion.tokoonline.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.oblivion.tokoonline.R;
 import com.oblivion.tokoonline.fragment.CityFragment;
 import com.oblivion.tokoonline.model.Province_model;
+import com.oblivion.tokoonline.view.NextSellActivity;
 
 import java.util.List;
 
@@ -23,10 +25,13 @@ public class ProvinceAdapter extends RecyclerView.Adapter<ProvinceAdapter.Provin
     private Context mContext;
     private List<Province_model> province_model;
 
+
     public ProvinceAdapter(Context mContext, List<Province_model> province_model){
 
     this.mContext = mContext;
     this.province_model = province_model;
+
+
 
     }
 
@@ -46,12 +51,14 @@ public class ProvinceAdapter extends RecyclerView.Adapter<ProvinceAdapter.Provin
             @Override
             public void onClick(View v) {
 
-                CityFragment fragment = new CityFragment();
-                Bundle bundle = new Bundle();
-                bundle.putString("provinsi", model.getProvinsi());
-                fragment.setArguments(bundle);
-                AppCompatActivity activity = (AppCompatActivity) v.getContext();
-                activity.getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, fragment).commit();
+                    CityFragment fragment = new CityFragment();
+                    Bundle bundle = new Bundle();
+                    bundle.putString("provinsi", model.getProvinsi());
+                    fragment.setArguments(bundle);
+                    AppCompatActivity activity = (AppCompatActivity) v.getContext();
+                    activity.getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, fragment).commit();
+
+
 
             }
         });

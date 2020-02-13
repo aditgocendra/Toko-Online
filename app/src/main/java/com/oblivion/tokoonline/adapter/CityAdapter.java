@@ -22,6 +22,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.oblivion.tokoonline.R;
 import com.oblivion.tokoonline.model.City_model;
 import com.oblivion.tokoonline.view.MainActivity;
+import com.oblivion.tokoonline.view.NextSellActivity;
 
 import java.util.List;
 
@@ -29,6 +30,7 @@ public class CityAdapter extends RecyclerView.Adapter<CityAdapter.CityViewHolder
 
     private Context mContext;
     private List<City_model> city_models;
+
 
 
     public CityAdapter(Context context, List<City_model> city_models){
@@ -64,8 +66,13 @@ public class CityAdapter extends RecyclerView.Adapter<CityAdapter.CityViewHolder
                         .setValue(model.getValue()).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
-                        Intent intent = new Intent(mContext, MainActivity.class);
-                        mContext.startActivity(intent);
+
+
+
+                            Intent intent = new Intent(mContext, MainActivity.class);
+                            mContext.startActivity(intent);
+
+
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
@@ -73,7 +80,6 @@ public class CityAdapter extends RecyclerView.Adapter<CityAdapter.CityViewHolder
                         Toast.makeText(mContext,e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
-
 
 
             }

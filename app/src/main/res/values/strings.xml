@@ -20,5 +20,12 @@
 
     <!-- end kategori -->
 
+    <string-array name="condition">
+        <item>Baru</item>
+        <item>Bekas</item>
+
+
+    </string-array>
+
 
 </resources>

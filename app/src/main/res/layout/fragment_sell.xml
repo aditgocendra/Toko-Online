@@ -47,7 +47,6 @@
 
         </RelativeLayout>
 
-
         <GridView
             android:id="@+id/myGrid"
             android:layout_width="match_parent"
@@ -59,8 +58,6 @@
             android:stretchMode="none"
             android:gravity="center"
             android:layout_marginTop="1dp"/>
-
-
 
     </LinearLayout>
 

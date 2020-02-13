@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.category.ElectronicActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <include layout="@layout/toolbar_back"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="15dp">
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center_horizontal"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:onClick="computer_click">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@mipmap/ic_computer"
+                    android:background="@drawable/bg_item_kategori"
+                    android:padding="7dp"/>
+
+                <TextView
+                    android:layout_marginTop="5dp"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:text="Komputer"
+                    android:textSize="12sp"
+                    android:textAlignment="center"
+                    />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:onClick="handphone_click">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@mipmap/ic_phone_logo"
+                    android:background="@drawable/bg_item_kategori"
+                    android:padding="7dp"/>
+
+                <TextView
+                    android:layout_marginTop="5dp"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:text="Handphone"
+                    android:textSize="12sp"
+                    android:textAlignment="center"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center_horizontal"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:onClick="tablet_click">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@mipmap/ic_tablet"
+                    android:background="@drawable/bg_item_kategori"
+                    android:padding="7dp"/>
+
+                <TextView
+                    android:layout_marginTop="5dp"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:text="Tablet"
+                    android:textAlignment="center"
+                    android:textSize="12sp"/>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="15dp">
+
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center_horizontal"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:onClick="television_click">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@mipmap/ic_television"
+                    android:background="@drawable/bg_item_kategori"
+                    android:padding="7dp"/>
+
+                <TextView
+                    android:layout_marginTop="5dp"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:text="Televisi"
+                    android:textSize="12sp"
+                    android:textAlignment="center"
+                    />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:onClick="camera_click"
+                >
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@mipmap/ic_camera_logo"
+                    android:background="@drawable/bg_item_kategori"
+                    android:padding="7dp"/>
+
+                <TextView
+                    android:layout_marginTop="5dp"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:text="Kamera"
+                    android:textSize="12sp"
+                    android:textAlignment="center"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center_horizontal"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:onClick="laptop_click">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@mipmap/ic_laptop"
+                    android:background="@drawable/bg_item_kategori"
+                    android:padding="7dp"/>
+
+                <TextView
+                    android:layout_marginTop="5dp"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:text="Laptop"
+                    android:textAlignment="center"
+                    android:textSize="12sp"/>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

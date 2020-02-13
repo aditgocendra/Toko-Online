@@ -18,7 +18,15 @@
         android:roundIcon="@mipmap/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.NextSellActivity"/>
+        <activity android:name=".view.ItemViewByCategory"></activity>
+        <activity android:name=".view.category.VehicleActivity" />
+        <activity android:name=".view.category.FoodAndDrinkActivity" />
+        <activity android:name=".view.category.FashionActivity" />
+        <activity android:name=".view.category.BookAndPenActivity" />
+        <activity android:name=".view.ChoseCategorySell" />
+        <activity android:name=".view.category.AccElectronicActivity" />
+        <activity android:name=".view.category.ElectronicActivity" />
+        <activity android:name=".view.NextSellActivity" />
         <activity android:name=".view.PickLocationActivity" />
         <activity
             android:name=".view.EditProfileActivity"
@@ -40,8 +48,7 @@
 
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-7804378578693049~9668929047"/>
-
+            android:value="ca-app-pub-7804378578693049~9668929047" />
     </application>
 
 </manifest>

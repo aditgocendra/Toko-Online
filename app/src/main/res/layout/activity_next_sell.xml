@@ -10,6 +10,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -55,7 +57,8 @@
                         android:id="@+id/header_ads_edt"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="text"/>
+                        android:inputType="text"
+                        android:maxLength="25"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -71,7 +74,7 @@
                         android:id="@+id/price_item"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="text"/>
+                        android:inputType="number"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -87,36 +90,73 @@
                         android:id="@+id/number_phone"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="text"/>
+                        android:inputType="number"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
 
 
 
-
                 <LinearLayout
-                    android:id="@+id/logout_user"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:background="@drawable/background_border"
+                    android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
-                    android:padding="5dp">
-
+                    android:layout_margin="5dp">
 
                     <TextView
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Lokasi Kota Anda"
-                        android:drawableEnd="@drawable/ic_keyboard_arrow_right"
-                        android:drawablePadding="10dp"
+                        android:text="Kondisi :"
                         android:textSize="18sp"
-                        android:layout_gravity="center_vertical"/>
+                        android:layout_weight="10"
+                        android:layout_gravity="center"
+                        android:gravity="center"/>
+
+
+                    <Spinner
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:id="@+id/spinner_condition"
+                        android:textSize="18sp"
+                        android:gravity="center_vertical"
+                        android:layout_weight="90"/>
 
                 </LinearLayout>
+
+
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Kota Anda"
+                        android:layout_gravity="center_horizontal"
+                        >
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/your_location_city_edt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="text"/>
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:layout_marginRight="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:paddingRight="5dp"
+                    android:paddingLeft="5dp"
+                    android:gravity="end"
+                    android:textColor="@color/primaryDarkColor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Berbagi lokasi kota saat ini"
+                    android:onClick="share_city_location"/>
+
 
 
 
@@ -135,7 +175,7 @@
                     >
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/your_location_edt"
+                        android:id="@+id/your_location_edt_address"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="text"/>
@@ -163,7 +203,7 @@
                         android:textColor="@color/primaryDarkColor"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Berbagi lokasi saat ini"
+                        android:text="Berbagi lokasi alamat saat ini"
                         android:onClick="share_location_click"/>
 
 
@@ -179,7 +219,7 @@
                     >
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/description"
+                        android:id="@+id/description_item"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="textMultiLine"/>
@@ -194,19 +234,14 @@
                     android:textColor="@color/primaryTextColor"
                     android:background="@drawable/bg_btn"
                     android:layout_gravity="center_horizontal"
+                    android:onClick="post_ads"
                     />
 
 
             </LinearLayout>
 
-
-
         </LinearLayout>
 
-
     </ScrollView>
-
-
-
 
 </RelativeLayout>

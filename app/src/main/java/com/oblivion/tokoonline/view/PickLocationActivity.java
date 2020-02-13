@@ -8,11 +8,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.oblivion.tokoonline.R;
 import com.oblivion.tokoonline.fragment.ProvinceFragment;
 
 public class PickLocationActivity extends AppCompatActivity {
+
+    private String activity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,10 +23,12 @@ public class PickLocationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_pick_location);
 
 
-        final Fragment fragment = new ProvinceFragment();
 
+
+
+        final Fragment fragment = new ProvinceFragment();
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.frame_layout, fragment, "Pilih Provinsi");
+        fragmentTransaction.replace(R.id.frame_layout, fragment);
         fragmentTransaction.commit();
 
         ImageView back_topbar = findViewById(R.id.tool_back);
@@ -32,11 +37,22 @@ public class PickLocationActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                if (activity != null){
+                    Intent intent = new Intent(PickLocationActivity.this, NextSellActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                    startActivity(intent);
+
+                }else {
                     Intent intent = new Intent(PickLocationActivity.this, MainActivity.class);
                     startActivity(intent);
+
+                }
+
 
             }
         });
 
     }
+
+
 }

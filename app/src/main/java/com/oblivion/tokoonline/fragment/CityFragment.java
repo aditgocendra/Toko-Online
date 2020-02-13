@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -37,7 +38,7 @@ public class CityFragment extends Fragment {
     private List<City_model> city_models;
     private LinearLayoutManager manager;
     private RecyclerView mCity;
-    private String province;
+    private String province, activity;
 
     public CityFragment() {
         // Required empty public constructor
@@ -48,6 +49,7 @@ public class CityFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         province = getArguments().getString("provinsi");
+
 
     }
 

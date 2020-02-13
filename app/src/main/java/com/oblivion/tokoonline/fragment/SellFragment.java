@@ -34,6 +34,7 @@ import com.oblivion.tokoonline.Utils.FilePaths;
 import com.oblivion.tokoonline.Utils.FileSearch;
 import com.oblivion.tokoonline.Utils.UniversalImageLoader;
 import com.oblivion.tokoonline.adapter.GridImageAdapter;
+import com.oblivion.tokoonline.view.ChoseCategorySell;
 import com.oblivion.tokoonline.view.NextSellActivity;
 
 import java.io.File;
@@ -160,11 +161,11 @@ public class SellFragment extends Fragment {
         });
 
 
+
+
     }
 
     private void setupGridView(String s){
-
-
         imgURL = FileSearch.getFilePath(s);
         int gridWith = getResources().getDisplayMetrics().widthPixels;
         int imageWidth = gridWith/NUM_GRID_COLUMNS;
@@ -254,9 +255,9 @@ public class SellFragment extends Fragment {
 
     private void updateUI(String url){
 
-        Intent intent = new Intent(getContext(), NextSellActivity.class);
+        Intent intent = new Intent(getContext(), ChoseCategorySell.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        intent.putExtra("urlLocation", url);
+        intent.putExtra("urlLocationPhoto", url);
         startActivity(intent);
 
 

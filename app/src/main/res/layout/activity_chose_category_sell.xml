@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.ChoseCategorySell">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <include layout="@layout/toolbar_back"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="15dp">
+
+
+
+            <LinearLayout
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center_horizontal"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:onClick="pick_kat_book_and_pen">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@mipmap/buku_peralatan_tulis"
+                    android:background="@drawable/bg_item_kategori"
+                    android:padding="7dp"/>
+
+                <TextView
+                    android:layout_marginTop="5dp"
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/buku_peralatan"
+                    android:textSize="12sp"
+                    android:textAlignment="center"
+                    />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:onClick="pick_kat_electronic">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@mipmap/elektronik"
+                    android:background="@drawable/bg_item_kategori"
+                    android:padding="7dp"/>
+
+                <TextView
+                    android:layout_marginTop="5dp"
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/elektronik"
+                    android:textSize="12sp"
+                    android:textAlignment="center"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center_horizontal"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:onClick="pick_kat_acc_electronic">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@mipmap/aksesoris_elektronik"
+                    android:background="@drawable/bg_item_kategori"
+                    android:padding="7dp"
+                    />
+
+                <TextView
+                    android:layout_marginTop="5dp"
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/aksesoris_elektronik"
+                    android:textAlignment="center"
+                    android:textSize="12sp"/>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="20dp">
+
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center_horizontal"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:onClick="pick_kat_vehicle">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@mipmap/kendaraan"
+                    android:background="@drawable/bg_item_kategori"
+                    android:padding="7dp"/>
+
+                <TextView
+                    android:layout_marginTop="5dp"
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/mobil"
+                    android:textSize="12sp"
+                    android:textAlignment="center"/>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:onClick="pick_kat_food_and_drink"
+                >
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@mipmap/makanan_minuman"
+                    android:background="@drawable/bg_item_kategori"
+                    android:padding="7dp"/>
+
+                <TextView
+                    android:layout_marginTop="5dp"
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/makanan_minuman"
+                    android:textSize="12sp"
+                    android:textAlignment="center"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/kat_fashion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center_horizontal"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:onClick="pick_kat_fashion">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@mipmap/ic_fashion"
+                    android:background="@drawable/bg_item_kategori"
+                    android:padding="7dp"/>
+
+                <TextView
+                    android:layout_marginTop="5dp"
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:text="Fashion"
+                    android:textSize="12sp"
+                    android:textAlignment="center"/>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

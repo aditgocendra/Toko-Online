@@ -2,26 +2,24 @@ package com.oblivion.tokoonline.view;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.GravityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
-
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.MenuItem;
 import android.widget.Toast;
-
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.oblivion.tokoonline.R;
+import com.oblivion.tokoonline.Utils.NetworkConnection;
 import com.oblivion.tokoonline.fragment.AccountFragment;
 import com.oblivion.tokoonline.fragment.FavoriteFragment;
 import com.oblivion.tokoonline.fragment.HomeFragment;
-import com.oblivion.tokoonline.fragment.MystoreFragment;
+import com.oblivion.tokoonline.fragment.NoConnectionFragment;
 import com.oblivion.tokoonline.fragment.SellFragment;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Fragment homeFragment, favoriteFragment, accountFragment, sellFragment;
+    private Fragment homeFragment, favoriteFragment, accountFragment, sellFragment, networkFragment;
 
 
 
@@ -35,25 +33,29 @@ public class MainActivity extends AppCompatActivity {
         homeFragment = new HomeFragment();
         favoriteFragment = new FavoriteFragment();
         accountFragment = new AccountFragment();
-//        mystoreFragment = new MystoreFragment();
+//      mystoreFragment = new MystoreFragment();
         sellFragment = new SellFragment();
+        networkFragment = new NoConnectionFragment();
 
-        if (activity == null){
-            initComponent();
 
-            setFragment(homeFragment);
+        if (!NetworkConnection.isConnected(MainActivity.this)){
+
+            setFragment(networkFragment);
 
         }else {
-
-            if (activity.equals("settingActivity")){
-                setFragment(accountFragment);
-            }else if(activity.equals("nextsellActivity")){
-                setFragment(sellFragment);
+            if (activity == null){
+                initComponent();
+                setFragment(homeFragment);
+            }else {
+                if (activity.equals("settingActivity")){
+                    initComponent();
+                    setFragment(accountFragment);
+                }else if(activity.equals("nextsellActivity")){
+                    initComponent();
+                    setFragment(sellFragment);
+                }
             }
         }
-
-
-
 
     }
 

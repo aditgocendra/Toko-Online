@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.category.AccElectronicActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <include layout="@layout/toolbar_back"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="15dp">
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center_horizontal"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:onClick="headset_click">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@mipmap/ic_headset"
+                    android:background="@drawable/bg_item_kategori"
+                    android:padding="7dp"/>
+
+                <TextView
+                    android:layout_marginTop="5dp"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:text="Headset"
+                    android:textSize="12sp"
+                    android:textAlignment="center"
+                    />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:onClick="keyboard_click"
+                >
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@mipmap/ic_keyboard"
+                    android:background="@drawable/bg_item_kategori"
+                    android:padding="7dp"/>
+
+                <TextView
+                    android:layout_marginTop="5dp"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:text="Keyboard"
+                    android:textSize="12sp"
+                    android:textAlignment="center"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center_horizontal"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:onClick="sim_card">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@mipmap/ic_sim_card"
+                    android:background="@drawable/bg_item_kategori"
+                    android:padding="7dp"/>
+
+                <TextView
+                    android:layout_marginTop="5dp"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:text="Sim Card"
+                    android:textAlignment="center"
+                    android:textSize="12sp"/>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="15dp">
+
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center_horizontal"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:onClick="mouse_click">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@mipmap/ic_mouse_24px"
+                    android:background="@drawable/bg_item_kategori"
+                    android:padding="7dp"/>
+
+                <TextView
+                    android:layout_marginTop="5dp"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:text="Mouse"
+                    android:textSize="12sp"
+                    android:textAlignment="center"
+                    />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:onClick="speaker_click"
+                >
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@mipmap/ic_speaker"
+                    android:background="@drawable/bg_item_kategori"
+                    android:padding="7dp"/>
+
+                <TextView
+                    android:layout_marginTop="5dp"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:text="Speaker"
+                    android:textSize="12sp"
+                    android:textAlignment="center"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center_horizontal"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:onClick="monitor_click">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@mipmap/ic_monitor"
+                    android:background="@drawable/bg_item_kategori"
+                    android:padding="7dp"/>
+
+                <TextView
+                    android:layout_marginTop="5dp"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:text="Monitor"
+                    android:textAlignment="center"
+                    android:textSize="12sp"/>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

@@ -2,13 +2,13 @@ package com.oblivion.tokoonline.fragment;
 
 
 import android.content.Intent;
-import android.graphics.Color;
+
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.core.app.ActivityCompat;
+
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -17,6 +17,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.google.android.gms.ads.AdListener;
@@ -28,12 +29,17 @@ import com.google.android.gms.ads.initialization.OnInitializationCompleteListene
 import com.oblivion.tokoonline.R;
 import com.oblivion.tokoonline.adapter.SliderAdapter;
 import com.oblivion.tokoonline.view.PickLocationActivity;
-import com.oblivion.tokoonline.view.SettingActivity;
+
+import com.oblivion.tokoonline.view.category.AccElectronicActivity;
+import com.oblivion.tokoonline.view.category.BookAndPenActivity;
+import com.oblivion.tokoonline.view.category.ElectronicActivity;
+import com.oblivion.tokoonline.view.category.FashionActivity;
+import com.oblivion.tokoonline.view.category.FoodAndDrinkActivity;
+import com.oblivion.tokoonline.view.category.VehicleActivity;
 import com.smarteist.autoimageslider.IndicatorAnimations;
 import com.smarteist.autoimageslider.SliderAnimations;
 import com.smarteist.autoimageslider.SliderView;
 
-import java.util.Objects;
 
 
 public class HomeFragment extends Fragment {
@@ -58,8 +64,80 @@ public class HomeFragment extends Fragment {
 
         setAdmob(view);
 
+        initComponent(view);
+
 
         return view;
+    }
+
+
+    private void initComponent(View view){
+
+        LinearLayout electronic_btn ,acc_elec_btn, book_pen_btn, fashion_btn, vehicle_btn, food_and_drink_btn;
+
+
+        electronic_btn = view.findViewById(R.id.kat_electronic);
+        acc_elec_btn = view.findViewById(R.id.kat_acc_electronic);
+        book_pen_btn = view.findViewById(R.id.kat_book_and_pen);
+        fashion_btn = view.findViewById(R.id.kat_fashion);
+        vehicle_btn = view.findViewById(R.id.kat_vehicle);
+        food_and_drink_btn = view.findViewById(R.id.kat_food_and_drink);
+
+
+
+
+        electronic_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent =  new Intent(getContext(), ElectronicActivity.class);
+                startActivity(intent);
+
+            }
+        });
+
+
+        acc_elec_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent =  new Intent(getContext(), AccElectronicActivity.class);
+                startActivity(intent);
+
+            }
+        });
+
+        book_pen_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), BookAndPenActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        fashion_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent =  new Intent(getContext(), FashionActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        vehicle_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent  = new Intent(getContext(), VehicleActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        food_and_drink_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), FoodAndDrinkActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
     @Override
