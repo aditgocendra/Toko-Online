@@ -67,12 +67,6 @@ public class GridImageAdapter extends ArrayAdapter<String> {
         setImage(imgURL, holder.image, holder.mProgressBar, mAppend);
 
 
-
-
-
-
-
-
         return convertView;
     }
 

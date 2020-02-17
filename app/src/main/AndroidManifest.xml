@@ -10,6 +10,8 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
+
 
     <application
         android:allowBackup="true"
@@ -18,7 +20,9 @@
         android:roundIcon="@mipmap/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.ItemViewByCategory"></activity>
+        <activity android:name=".view.ItemViewDetail"
+            />
+        <activity android:name=".view.ItemViewByCategory" />
         <activity android:name=".view.category.VehicleActivity" />
         <activity android:name=".view.category.FoodAndDrinkActivity" />
         <activity android:name=".view.category.FashionActivity" />
@@ -36,7 +40,8 @@
         <activity android:name=".view.LoginActivity" />
         <activity
             android:name=".view.MainActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+           />
         <activity android:name=".view.RegisterActivity" />
         <activity android:name=".view.SplashActivity">
             <intent-filter>

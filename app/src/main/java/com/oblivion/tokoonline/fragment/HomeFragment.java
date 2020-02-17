@@ -10,6 +10,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -26,8 +28,15 @@ import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.oblivion.tokoonline.R;
+import com.oblivion.tokoonline.adapter.ItemHorizontalAdapter;
 import com.oblivion.tokoonline.adapter.SliderAdapter;
+import com.oblivion.tokoonline.model.ItemSell_model;
 import com.oblivion.tokoonline.view.PickLocationActivity;
 
 import com.oblivion.tokoonline.view.category.AccElectronicActivity;
@@ -40,11 +49,16 @@ import com.smarteist.autoimageslider.IndicatorAnimations;
 import com.smarteist.autoimageslider.SliderAnimations;
 import com.smarteist.autoimageslider.SliderView;
 
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class HomeFragment extends Fragment {
 
     private View view;
+    private List<ItemSell_model> models;
+    private RecyclerView horizontalItem;
+    private ItemHorizontalAdapter itemHorizontalAdapter;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -64,8 +78,9 @@ public class HomeFragment extends Fragment {
 
         setAdmob(view);
 
-        initComponent(view);
+        setNewItem();
 
+        initComponent(view);
 
         return view;
     }
@@ -82,6 +97,17 @@ public class HomeFragment extends Fragment {
         fashion_btn = view.findViewById(R.id.kat_fashion);
         vehicle_btn = view.findViewById(R.id.kat_vehicle);
         food_and_drink_btn = view.findViewById(R.id.kat_food_and_drink);
+
+
+        itemHorizontalAdapter = new ItemHorizontalAdapter(getContext(), models);
+
+        horizontalItem = view.findViewById(R.id.horizontal_item_view);
+
+        LinearLayoutManager manager = new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false);
+//        manager.setStackFromEnd(true);
+
+        horizontalItem.setLayoutManager(manager);
+        horizontalItem.setAdapter(itemHorizontalAdapter);
 
 
 
@@ -170,6 +196,34 @@ public class HomeFragment extends Fragment {
     }
 
 
+    private void setNewItem(){
+        models = new ArrayList<>();
+
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("itemSell");
+
+        reference.limitToLast(10).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()){
+
+                    ItemSell_model itemSell_model = snapshot.getValue(ItemSell_model.class);
+                    models.add(itemSell_model);
+
+                }
+                itemHorizontalAdapter.notifyDataSetChanged();
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+
+    }
+
+
     private void setSlider(){
 
         SliderView sliderView =  view.findViewById(R.id.imageSlider);
@@ -209,7 +263,7 @@ public class HomeFragment extends Fragment {
 
             @Override
             public void onAdFailedToLoad(int errorCode) {
-                Toast.makeText(getContext(), "error : "+errorCode, Toast.LENGTH_SHORT).show();
+
             }
 
             @Override
@@ -238,4 +292,7 @@ public class HomeFragment extends Fragment {
 
     }
 
-    }
+
+
+
+}

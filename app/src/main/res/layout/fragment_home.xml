@@ -6,9 +6,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragment.HomeFragment">
 
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -59,7 +61,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+           >
 
             <androidx.cardview.widget.CardView
                 android:layout_width="wrap_content"
@@ -73,22 +76,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     ads:adSize="BANNER"
-                    ads:adUnitId="ca-app-pub-3940256099942544/6300978111">
+                    ads:adUnitId="ca-app-pub-7804378578693049/5729684037">
                 </com.google.android.gms.ads.AdView>
 
 
 
             </androidx.cardview.widget.CardView>
-
-
-
-<!--            <TextView-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="Kategori"-->
-<!--                android:textSize="12sp"-->
-<!--                android:layout_marginLeft="10dp"-->
-<!--                android:layout_marginRight="10dp"/>-->
 
 
             <LinearLayout
@@ -277,14 +270,30 @@
 
             </LinearLayout>
 
-            
+            <TextView
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textStyle="bold|italic"
+                android:text="Barang Terbaru"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:padding="10dp"
+                android:layout_marginBottom="50dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/horizontal_item_view"/>
 
 
             </LinearLayout>
 
-
         </LinearLayout>
 
     </ScrollView>
+
 
 </FrameLayout>

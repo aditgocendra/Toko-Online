@@ -129,7 +129,7 @@ public class NextSellActivity extends AppCompatActivity implements AdapterView.O
             public void onClick(View v) {
                 Intent intent = new Intent(NextSellActivity.this, MainActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-                intent.putExtra("activity", "nextsellActivity");
+                intent.putExtra("activity", "sellActivity");
                 startActivity(intent);
             }
         });
@@ -233,7 +233,7 @@ public class NextSellActivity extends AppCompatActivity implements AdapterView.O
             headerAdsEdt.setError("Judul harus diisi");
             headerAdsEdt.requestFocus();
         }else if (headerAds.length() < 10){
-            headerAdsEdt.setError("Judul kurang dari 15 character");
+            headerAdsEdt.setError("Judul kurang dari 10 character");
             headerAdsEdt.requestFocus();
         }else if(price.isEmpty()){
             priceItemEdt.setError("Harga harus diisi");
@@ -242,6 +242,9 @@ public class NextSellActivity extends AppCompatActivity implements AdapterView.O
             numberPhoneEdt.setError("Nomor harus diisi");
             numberPhoneEdt.requestFocus();
         }else if(numberPhone.length() < 10){
+            numberPhoneEdt.setError("Format nomor tidak valid");
+            numberPhoneEdt.requestFocus();
+        }else if(numberPhone.length() > 15){
             numberPhoneEdt.setError("Format nomor tidak valid");
             numberPhoneEdt.requestFocus();
         }else if(address.isEmpty()){
@@ -335,7 +338,9 @@ public class NextSellActivity extends AppCompatActivity implements AdapterView.O
             @Override
             public void onSuccess(Void aVoid) {
                 progressDialog.dismiss();
-                Toast.makeText(NextSellActivity.this, "Succsess", Toast.LENGTH_SHORT).show();
+                Intent intent  = new Intent(NextSellActivity.this, MainActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
             }
         });
 
@@ -480,5 +485,13 @@ public class NextSellActivity extends AppCompatActivity implements AdapterView.O
 
     public void post_ads(View view) {
         validationForm();
+    }
+
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(Intent.ACTION_MAIN);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
     }
 }

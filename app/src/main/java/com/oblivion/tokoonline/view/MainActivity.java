@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
                 if (activity.equals("settingActivity")){
                     initComponent();
                     setFragment(accountFragment);
-                }else if(activity.equals("nextsellActivity")){
+                }else if(activity.equals("sellActivity")){
                     initComponent();
                     setFragment(sellFragment);
                 }

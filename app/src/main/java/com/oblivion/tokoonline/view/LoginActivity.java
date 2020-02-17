@@ -174,6 +174,8 @@ public class LoginActivity extends AppCompatActivity {
                     progressBar.setVisibility(View.INVISIBLE);
                     updateUI(user);
 
+                }else {
+                    updateUI(user);
                 }
             }
 

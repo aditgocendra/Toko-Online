@@ -1,6 +1,7 @@
 package com.oblivion.tokoonline.view;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,12 +18,33 @@ import com.oblivion.tokoonline.view.category.VehicleActivity;
 public class ChoseCategorySell extends AppCompatActivity {
 
     String urlLocationPhoto;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chose_category_sell);
 
         urlLocationPhoto = getIntent().getStringExtra("urlLocationPhoto");
+
+
+        Toolbar toolbar = findViewById(R.id.toolbar_chose);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+
+
+        toolbar.setNavigationIcon(getResources().getDrawable(R.drawable.ic_left_arrow));
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                    Intent intent = new Intent(ChoseCategorySell.this, MainActivity.class);
+                    intent.putExtra("activity", "sellActivity");
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+            }
+        });
 
     }
 
