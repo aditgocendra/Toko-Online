@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardElevation="5dp"
+        android:layout_margin="10dp">
+
+        <LinearLayout
+            android:id="@+id/click_item_account"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="5dp">
+
+            <ImageView
+                android:id="@+id/more_set"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/ic_more"
+                android:layout_gravity="end"
+                android:layout_marginBottom="5dp"/>
+
+            <ImageView
+                android:id="@+id/image_item_account"
+                android:layout_width="match_parent"
+                android:src="@drawable/ic_image"
+                android:layout_height="220dp"/>
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:id="@+id/header_ads_account"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Judul iklan"
+                android:textSize="16sp"
+                android:textColor="@color/secondaryTextColor"
+                />
+
+
+            <TextView
+                android:gravity="end"
+                android:layout_marginTop="5dp"
+                android:id="@+id/price_item_account"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Harga"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:textColor="@color/primaryColor"/>
+
+
+        </LinearLayout>
+
+
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

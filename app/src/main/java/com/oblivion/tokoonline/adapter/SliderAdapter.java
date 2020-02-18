@@ -30,7 +30,7 @@ public class SliderAdapter extends SliderViewAdapter<SliderAdapter.SliderAdapter
         switch (position) {
             case 0:
                 Picasso.get()
-                        .load("https://firebasestorage.googleapis.com/v0/b/info-razia.appspot.com/o/LaporRaziaImage%2F1578798716798.jpg?alt=media&token=07500c1e-48b2-4938-8a3f-7a7cef696b2b")
+                        .load("https://images.pexels.com/photos/929778/pexels-photo-929778.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260")
                         .fit()
                         .centerCrop()
                         .into(viewHolder.imageViewBackground);

@@ -8,12 +8,14 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.oblivion.tokoonline.R;
 import com.oblivion.tokoonline.model.ItemSell_model;
+import com.oblivion.tokoonline.model.User_model;
 import com.oblivion.tokoonline.view.ItemViewDetail;
 import com.squareup.picasso.Picasso;
 
@@ -25,10 +27,12 @@ public class RecycleItemAdapter extends RecyclerView.Adapter<RecycleItemAdapter.
     private Context mContext;
     private List<ItemSell_model> itemSellModels;
 
+
     public RecycleItemAdapter(Context mContext, List<ItemSell_model> models){
 
         this.mContext = mContext;
         this.itemSellModels = models;
+
 
 
     }
@@ -43,6 +47,8 @@ public class RecycleItemAdapter extends RecyclerView.Adapter<RecycleItemAdapter.
     @Override
     public void onBindViewHolder(@NonNull ItemViewHolderVH holder, int position) {
         final ItemSell_model sellModel = itemSellModels.get(position);
+
+
 
         Picasso.get().load(sellModel.getUrlPhotoItem()).fit().centerCrop().into(holder.imageItem);
         holder.textHeader.setText(sellModel.getHeaderAds());
@@ -72,6 +78,7 @@ public class RecycleItemAdapter extends RecyclerView.Adapter<RecycleItemAdapter.
                 mContext.startActivity(intent);
             }
         });
+
     }
 
     @Override

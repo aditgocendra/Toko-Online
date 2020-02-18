@@ -7,9 +7,11 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -188,6 +190,20 @@ public class HomeFragment extends Fragment {
                 startActivity(intent);
                 return true;
 
+            case R.id.search://            case R.id.search:
+//
+//                Fragment newFragment = new SearchFragment();
+//                FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+//                fragmentTransaction.replace(R.id.frame_layout, newFragment, "fragment");
+//                fragmentTransaction.commit();
+//                return true;
+
+                Fragment newFragment = new SearchFragment();
+                FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.frame_layout, newFragment, "fragment");
+                fragmentTransaction.commit();
+                return true;
+
 
             default:
                 return super.onOptionsItemSelected(item);
@@ -204,6 +220,7 @@ public class HomeFragment extends Fragment {
         reference.limitToLast(10).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()){
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()){
 
                     ItemSell_model itemSell_model = snapshot.getValue(ItemSell_model.class);
@@ -212,6 +229,7 @@ public class HomeFragment extends Fragment {
                 }
                 itemHorizontalAdapter.notifyDataSetChanged();
 
+                }
             }
 
             @Override

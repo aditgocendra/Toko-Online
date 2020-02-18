@@ -17,6 +17,8 @@ import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -26,6 +28,7 @@ import com.oblivion.tokoonline.R;
 import com.oblivion.tokoonline.adapter.RecycleItemAdapter;
 import com.oblivion.tokoonline.adapter.SliderAdapter;
 import com.oblivion.tokoonline.model.ItemSell_model;
+import com.oblivion.tokoonline.model.User_model;
 import com.oblivion.tokoonline.view.category.AccElectronicActivity;
 import com.oblivion.tokoonline.view.category.BookAndPenActivity;
 import com.oblivion.tokoonline.view.category.ElectronicActivity;
@@ -44,6 +47,7 @@ public class ItemViewByCategory extends AppCompatActivity {
 
 
     private List<ItemSell_model> models;
+    private List<User_model> user_models;
 
 
     private RecyclerView viewItemRecycle;
@@ -60,6 +64,7 @@ public class ItemViewByCategory extends AppCompatActivity {
 
         setSlider();
 
+//        getUserLocation();
         setItem(subCategory);
 
         viewItemRecycle = findViewById(R.id.recycle_item);
@@ -140,7 +145,7 @@ public class ItemViewByCategory extends AppCompatActivity {
 
     private void setItem(String subCategory){
 
-        models = new ArrayList<>();
+        this.models = new ArrayList<>();
 
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("itemSell");
 
@@ -154,7 +159,7 @@ public class ItemViewByCategory extends AppCompatActivity {
                     for (DataSnapshot snapshot : dataSnapshot.getChildren()){
 
                         ItemSell_model model = snapshot.getValue(ItemSell_model.class);
-                        models.add(model);
+                        ItemViewByCategory.this.models.add(model);
 
                     }
                     itemAdapter.notifyDataSetChanged();
@@ -169,9 +174,36 @@ public class ItemViewByCategory extends AppCompatActivity {
 
             }
         });
+    }
 
 
+    private void getUserLocation(){
 
+        user_models = new ArrayList<>();
+
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
+
+        FirebaseUser mUser = FirebaseAuth.getInstance().getCurrentUser();
+
+        reference.child(mUser.getUid()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()){
+                    for (DataSnapshot ds : dataSnapshot.getChildren()){
+
+                        User_model model = ds.getValue(User_model.class);
+                        user_models.add(model);
+
+                    }
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
     }
 

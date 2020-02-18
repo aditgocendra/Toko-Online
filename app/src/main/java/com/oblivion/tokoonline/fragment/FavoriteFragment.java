@@ -62,6 +62,7 @@ public class FavoriteFragment extends Fragment {
 
         models = new ArrayList<>();
         itemAdapter = new RecycleItemAdapter(getContext(), models);
+        viewItemRecycle.setAdapter(itemAdapter);
 
         return v;
 
@@ -83,8 +84,10 @@ public class FavoriteFragment extends Fragment {
                         models.add(model);
 
                     }
-//                    itemAdapter.notifyDataSetChanged();
-                    viewItemRecycle.setAdapter(itemAdapter);
+                    itemAdapter.notifyDataSetChanged();
+
+                }else {
+                    Toast.makeText(getContext(), "Abda belum memfavoritkan apapun", Toast.LENGTH_SHORT).show();
                 }
             }
 
