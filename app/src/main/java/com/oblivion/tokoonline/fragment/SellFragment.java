@@ -36,6 +36,7 @@ import com.oblivion.tokoonline.Utils.UniversalImageLoader;
 import com.oblivion.tokoonline.adapter.GridImageAdapter;
 import com.oblivion.tokoonline.view.ChoseCategorySell;
 import com.oblivion.tokoonline.view.NextSellActivity;
+import com.squareup.picasso.Picasso;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -112,53 +113,62 @@ public class SellFragment extends Fragment {
     private void init(){
         FilePaths filePath = new FilePaths();
 
+        directories.add(filePath.PICTURES);
 
-
-        if (FileSearch.getFilePath(filePath.PICTURES) != null){
-            directories.add(filePath.PICTURES);
-        }
-
-        if(FileSearch.getDirectoryPath(filePath.PICTURES) != null){
+        if(FileSearch.getDirectoryPath(filePath.PICTURES) != null ){
             directories.addAll(FileSearch.getDirectoryPath(filePath.PICTURES)) ;
         }
 
-        if (FileSearch.getFilePath(filePath.CAMERA) != null){
-            directories.add(filePath.CAMERA);
-        }
-        if (FileSearch.getFilePath(filePath.WA) != null){
-            directories.add(filePath.WA);
-        }
+        directories.add(filePath.CAMERA);
+        directories.add(filePath.WA);
+        directories.add(filePath.Screenshoot);
+        directories.add(filePath.Bluetooth);
+//        if (FileSearch.getFilePath(filePath.CAMERA) != null){
+//            directories.add(filePath.CAMERA);
+//        }
+//        if (FileSearch.getFilePath(filePath.WA) != null){
+//            directories.add(filePath.WA);
+//        }
+//        if (FileSearch.getFilePath(filePath.Screenshoot) != null){
+//            directories.add(filePath.Screenshoot);
+//        }
+//        if (FileSearch.getFilePath(filePath.Bluetooth) != null){
+//            directories.add(filePath.Bluetooth  );
+//        }
+
+
+      //  Toast.makeText(getContext(), String.valueOf(directories), Toast.LENGTH_SHORT).show();
 
 
 
 
-
-        final ArrayList<String> data = new ArrayList<>();
-        getNameDirectory(data);
-
+            final ArrayList<String> data = new ArrayList<>();
+            getNameDirectory(data);
 
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(),
-                R.layout.spinner_item_style, data);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        directorySpinner.setAdapter(adapter);
 
-        directorySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                Log.d("TAG", "onItemClick: selected: " + directories.get(position));
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(),
+                    R.layout.spinner_item_style, data);
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            directorySpinner.setAdapter(adapter);
 
-                //setup our image grid for the directory chosen
+            directorySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                    Log.d("TAG", "onItemClick: selected: " + directories.get(position));
 
-                setupGridView(directories.get(position));
+                    //setup our image grid for the directory chosen
+                        setupGridView(directories.get(position));
 
-            }
 
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
+                }
 
-            }
-        });
+                @Override
+                public void onNothingSelected(AdapterView<?> parent) {
+
+                }
+            });
+
 
 
 
@@ -171,22 +181,25 @@ public class SellFragment extends Fragment {
         int imageWidth = gridWith/NUM_GRID_COLUMNS;
         gridView.setColumnWidth(imageWidth);
 
-        final GridImageAdapter adapter = new GridImageAdapter(getContext(), R.layout.item_grid,mAppend,imgURL);
+
+        final GridImageAdapter adapter = new GridImageAdapter(getContext(), R.layout.item_grid, mAppend, imgURL);
         gridView.setAdapter(adapter);
 
 
-        setImage(imgURL.get(0), imageView, progressBar, mAppend);
+       if (imgURL.size() > 0){
 
+        setImage(imgURL.get(0), imageView, progressBar, mAppend);
+       }
 
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Log.d("TAG", "onItemClick: selected an image: " + imgURL.get(position));
+//                Log.d("TAG", "onItemClick: selected an image: " + imgURL.get(position));
+                if (imgURL.size() > 0) {
+                    setImage(imgURL.get(position), imageView, progressBar, mAppend);
 
-                setImage(imgURL.get(position), imageView, progressBar, mAppend);
-
-                urlFile = imgURL.get(position);
-
+                    urlFile = imgURL.get(position);
+                }
 
 
             }
@@ -198,6 +211,8 @@ public class SellFragment extends Fragment {
 
 
     private void getNameDirectory(ArrayList<String> data){
+
+
 
         for (int i = 0; i < directories.size(); i++){
 
@@ -212,6 +227,7 @@ public class SellFragment extends Fragment {
             }
 
         }
+
 
     }
 

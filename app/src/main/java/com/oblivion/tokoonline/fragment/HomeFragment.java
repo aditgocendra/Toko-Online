@@ -179,10 +179,10 @@ public class HomeFragment extends Fragment {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
         switch (item.getItemId()){
-            case R.id.notif:
-
-                Toast.makeText(getContext(), "Belum dibuat", Toast.LENGTH_SHORT).show();
-                return true;
+//            case R.id.notif:
+//
+//                Toast.makeText(getContext(), "Belum dibuat", Toast.LENGTH_SHORT).show();
+//                return true;
 
             case R.id.location:
 

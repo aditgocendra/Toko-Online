@@ -1,6 +1,7 @@
 package com.oblivion.tokoonline.Utils;
 
 import android.content.Context;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -25,6 +26,8 @@ public class FavoriteUpdate {
     private long maxid_post = 1;
 
     public void userUpdateFavoriteItem(final String idItem, final ImageView view, final Context context){
+
+        view.setEnabled(false);
 
         final FirebaseUser mUser = FirebaseAuth.getInstance().getCurrentUser();
 
@@ -56,10 +59,11 @@ public class FavoriteUpdate {
 
                 if (dataSnapshot.exists()){
                     deleteFavorite(mUser.getUid(), idItem, view);
+
                 }else {
 
                     getUserFavorite.child(String.valueOf(maxid_post)).child("idUpload").setValue(idItem);
-                    updateFavorite(idItem);
+                    updateFavorite(idItem, view);
 
                     view.setImageResource(R.drawable.ic_favorite_purple);
 
@@ -73,30 +77,9 @@ public class FavoriteUpdate {
         });
     }
 
-    public void setUserFavoriteItem(String userUid, final String idItem, final ImageView view){
-        final DatabaseReference getUserFavorite = FirebaseDatabase.getInstance().getReference("userItemFavorite").child(userUid);
 
 
-        getUserFavorite.orderByChild("idUpload").equalTo(idItem).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-                if (dataSnapshot.exists()){
-                    view.setImageResource(R.drawable.ic_favorite_purple);
-                }else {
-                    view.setImageResource(R.drawable.ic_favorite_border);
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-    }
-
-
-    private void updateFavorite(final String idItem){
+    private void updateFavorite(final String idItem, final ImageView view){
 
         final DatabaseReference reference = FirebaseDatabase.getInstance().getReference("itemSell");
 
@@ -113,7 +96,11 @@ public class FavoriteUpdate {
                         int favorite = Integer.parseInt(itemSellModel.getFavorite()) + 1;
 
                         reference.child(idItem).child("favorite").setValue(String.valueOf(favorite));
+
+
                     }
+                    view.setEnabled(true);
+
                 }
             }
 
@@ -174,6 +161,7 @@ public class FavoriteUpdate {
                 }
 
                 view.setImageResource(R.drawable.ic_favorite_border);
+                view.setEnabled(true);
 
 
             }
@@ -185,5 +173,27 @@ public class FavoriteUpdate {
         });
 
 
+    }
+
+    public void setUserFavoriteItem(String userUid, final String idItem, final ImageView view){
+        final DatabaseReference getUserFavorite = FirebaseDatabase.getInstance().getReference("userItemFavorite").child(userUid);
+
+
+        getUserFavorite.orderByChild("idUpload").equalTo(idItem).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                if (dataSnapshot.exists()){
+                    view.setImageResource(R.drawable.ic_favorite_purple);
+                }else {
+                    view.setImageResource(R.drawable.ic_favorite_border);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 }

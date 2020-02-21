@@ -132,7 +132,13 @@ public class ItemViewDetail extends AppCompatActivity {
                     Intent intent = new Intent(ItemViewDetail.this, MainActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
-                }else {
+                }else if (activity.equals("settingActivity")){
+                    Intent intent = new Intent(ItemViewDetail.this, MainActivity.class);
+                    intent.putExtra("activity", activity);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+                }
+                else {
                     Intent intent = new Intent(ItemViewDetail.this, ItemViewByCategory.class);
                     intent.putExtra("subKategori", subCategory);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -222,8 +228,19 @@ public class ItemViewDetail extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-      Intent intent = new Intent(ItemViewDetail.this, MainActivity.class);
-      startActivity(intent);
+        if (activity.equals("home")){
+            Intent intent = new Intent(ItemViewDetail.this, MainActivity.class);
+            startActivity(intent);
+        }else if (activity.equals("settingActivity")){
+            Intent intent = new Intent(ItemViewDetail.this, MainActivity.class);
+            intent.putExtra("activity", activity);
+            startActivity(intent);
+        }
+        else {
+            Intent intent = new Intent(ItemViewDetail.this, ItemViewByCategory.class);
+            intent.putExtra("subKategori", subCategory);
+            startActivity(intent);
+        }
 
     }
 }

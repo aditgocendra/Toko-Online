@@ -47,7 +47,9 @@ public class ItemViewByCategory extends AppCompatActivity {
 
 
     private List<ItemSell_model> models;
+//    private List<ItemSell_model> paginatedItem;
     private List<User_model> user_models;
+//    private int mResult;
 
 
     private RecyclerView viewItemRecycle;
@@ -145,7 +147,8 @@ public class ItemViewByCategory extends AppCompatActivity {
 
     private void setItem(String subCategory){
 
-        this.models = new ArrayList<>();
+        models = new ArrayList<>();
+
 
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("itemSell");
 
@@ -159,10 +162,11 @@ public class ItemViewByCategory extends AppCompatActivity {
                     for (DataSnapshot snapshot : dataSnapshot.getChildren()){
 
                         ItemSell_model model = snapshot.getValue(ItemSell_model.class);
-                        ItemViewByCategory.this.models.add(model);
+                        models.add(model);
 
                     }
-                    itemAdapter.notifyDataSetChanged();
+
+                   itemAdapter.notifyDataSetChanged();
 
                 }else {
                     Toast.makeText(ItemViewByCategory.this, "Belum ada post", Toast.LENGTH_SHORT).show();
@@ -258,4 +262,70 @@ public class ItemViewByCategory extends AppCompatActivity {
 
 
     }
+
+
+//    private void setPaginatedItem(){
+//
+//        paginatedItem = new ArrayList<>();
+//
+//        if (models != null){
+//
+//            try {
+//
+//                int iterations = models.size();
+//
+//                if (iterations > 10){
+//                    iterations = 10;
+//                }
+//
+//                mResult = 10;
+//
+//                for (int i = 0; i < iterations; i++ ){
+//                    paginatedItem.add(models.get(i));
+//                }
+//
+//                itemAdapter.notifyDataSetChanged();
+//
+//            }catch (NullPointerException e){
+//                e.printStackTrace();
+//            }catch (IndexOutOfBoundsException e){
+//                e.printStackTrace();
+//            }
+//
+//        }
+//
+//    }
+
+//    private void displayMorePost(){
+//
+//        try {
+//            if (models.size() > mResult && models.size() > 0){
+//                int iterations;
+//
+//                if (models.size() > (mResult + 10)){
+//                    //display more
+//                    iterations = 10;
+//                }else {
+//                    iterations = models.size() - mResult;
+//                }
+//
+//                //add new post
+//                for (int i = 0; i < mResult + iterations; i++){
+//
+//                    paginatedItem.add(models.get(i));
+//
+//                }
+//                itemAdapter.notifyDataSetChanged();
+//            }
+//        }catch (NullPointerException e){
+//            e.printStackTrace();
+//        }catch (IndexOutOfBoundsException e){
+//            e.printStackTrace();
+//        }
+
+//    }
+
+
+
+
 }

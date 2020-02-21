@@ -9,13 +9,13 @@
         app:showAsAction="ifRoom"
         />
 
-    <item
-        android:icon="@drawable/ic_notifications"
-        android:id="@+id/notif"
-        android:title="Notifikasi"
-        app:showAsAction="ifRoom"
+<!--    <item-->
+<!--        android:icon="@drawable/ic_notifications"-->
+<!--        android:id="@+id/notif"-->
+<!--        android:title="Notifikasi"-->
+<!--        app:showAsAction="ifRoom"-->
 
-        />
+<!--        />-->
 
     <item
         android:icon="@drawable/ic_location"

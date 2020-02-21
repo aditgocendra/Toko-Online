@@ -24,6 +24,13 @@ import java.util.List;
 public class RecycleItemAdapter extends RecyclerView.Adapter<RecycleItemAdapter.ItemViewHolderVH> {
 
 
+//    public interface OnLoadMoreItem{
+//        void onLoadMoreItem();
+//    }
+//
+//    OnLoadMoreItem onLoadMoreItem;
+
+
     private Context mContext;
     private List<ItemSell_model> itemSellModels;
 
@@ -104,4 +111,23 @@ public class RecycleItemAdapter extends RecyclerView.Adapter<RecycleItemAdapter.
 
         }
     }
+
+//    private boolean reachedEndOflist(int position){
+//        return position == getItemCount() - 1;
+//    }
+//
+//    private void loadMoreData(){
+//        try {
+//            onLoadMoreItem = (OnLoadMoreItem) mContext;
+//        }catch (ClassCastException e){
+//            e.printStackTrace();
+//        }
+//
+//        try {
+//            onLoadMoreItem.onLoadMoreItem();
+//        }catch (NullPointerException e){
+//            e.printStackTrace();
+//        }
+
+ //   }
 }
